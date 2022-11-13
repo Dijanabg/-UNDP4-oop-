@@ -1,0 +1,9 @@
+form {
+    margin: 100px 25%;
+    width: 50%;
+    text-align: center;
+    background: darkblue;
+    color: white;
+    padding: 20px;
+    text-transform: uppercase;
+}
