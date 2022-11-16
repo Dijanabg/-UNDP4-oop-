@@ -2,19 +2,19 @@
 
 class Person
 {
-    private string $firstName;
-    private string $lastName;
+    private string $firstName1;
+    private string $lastName1;
 
     public function getPersonName()
     {
-        return $this->firstName;
-        return $this->lastName;
+        return $this->firstName1;
+        return $this->lastName1;
     }
 
-    public function setPersonName($firstName, $lastName)
+    public function setPersonName($firstName1, $lastName1)
     {
-        $this->firstName = $firstName;
-        $this->lastName = $lastName;
+        $this->firstName1 = $firstName1;
+        $this->lastName1 = $lastName1;
     }
 }
 

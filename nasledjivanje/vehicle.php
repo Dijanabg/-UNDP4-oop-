@@ -1,6 +1,6 @@
 <?php
 
-class Vehicle
+class Vehicle1
 {
     private $manufecturer;
     private $model;
@@ -27,7 +27,7 @@ class Vehicle
     }
 }
 
-class Truck extends Vehicle
+class Truck extends Vehicle1
 {
     private $carrigeSize;
 
@@ -41,7 +41,7 @@ class Truck extends Vehicle
     }
 }
 
-class Car extends Vehicle
+class Car1 extends Vehicle1
 {
     private $type;
 
@@ -54,9 +54,9 @@ class Car extends Vehicle
         return $this->type;
     }
 }
-$car = new Car();
+$car = new Car1();
 $truck = new Truck();
-$truck->setType("Volvo ");
+$truck->setManufecturer("Volvo ");
 // private atribute klase koje nasledjuju ne vide
 // public atribute klase koje nasledjuju vide
 // protected atribute vide klase koje nasledjuju, ali ne i ostali

@@ -38,7 +38,7 @@ class procesor
     }
     public function setName($newName)
     {
-        $this->brand = $newName;
+        $this->name = $newName;
     }
 }
 class Person
