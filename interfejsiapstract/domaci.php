@@ -25,7 +25,7 @@ interface GoingBackToLife{
 }
 
 interface Play{
-    function runing();
+    function running();
     
 }
 class Simpsons extends Cartoons {
@@ -104,20 +104,20 @@ class SchoolKids extends Simpsons implements Play,Learn{
     {
         echo "I memooorizeee";
     }
-    public function runing()
+    public function running()
     {
         echo "I run";
     }
 }
 class Rabbits extends Simpsons implements Play{
     
-    public function runing()
+    public function running()
     {
         echo "I run";
     }
 }
 class Princesses extends Simpsons implements GoingBackToLife,Play,Learn{
-    public function runing()
+    public function running()
     {
         echo "I run";
     }
@@ -135,8 +135,12 @@ echo $bart->getName().":<br>";
 echo $bart->walk().' '.$bart->jump()."<br>";
 echo "<br>".$bart->makeSound();
 
-// $bugsBanny=new Rabbits("Bug Banny");
-// echo $Bugbanny->running();
+$bugsBanny=new Rabbits("Bug Banny");
+echo $bugsBanny->running();
+
+
+$cindarela=new Princesses("Cindarela");
+
 // based on their type they make different sounds
 // The Simpsons have their catch phrase, as well as Loonie Tunes and Disney characters
 // SchoolKids are type of Simpsons, Rabbits are part of Loonie Tunes and princesses are part of the Disneys
