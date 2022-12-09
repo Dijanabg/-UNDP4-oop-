@@ -1,22 +1,29 @@
 <?php
 
+namespace Customer;
+
+use ACustomer\Customer;
+
+require_once('AbstructCustomer.php');
+
 class MinorPerson extends Customer
 {
     public function buy(Order $o)
     {
-        if ($this->forbiddenForMinorPerson($o))
-            return "You are minor person and you cant buy wine!";
+        if ($this->forbiddenForMinorPersons($o))
+            return "You are minor person and you can't buy wine!";
         else if ($this->money < $o->getTotalPrice())
-            return "You dont have enough money!";
+            return "You don't have enough money!";
         else
-            return "$this->firstName bought: <br> $o";
+            return "$this->firstname bougth:<br> $o";
     }
-    private function forbiddenForMinorPerson(Order $o)
+
+    private function forbiddenForMinorPersons(Order $o)
     {
         foreach ($o->getProducts() as $product) {
             if ($product->getProductType() == "wine")
-                return true;
+                return TRUE;
         }
-        return false;
+        return FALSE;
     }
 }

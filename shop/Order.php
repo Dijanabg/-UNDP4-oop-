@@ -1,6 +1,9 @@
 <?php
 
-require_once("Product.php");
+namespace Customer;
+
+require_once "Product.php";
+
 
 class Order
 {
@@ -10,7 +13,7 @@ class Order
     public function __construct()
     {
         $this->products = array();
-        //$this->totalprice = $totalprice;
+        // $this->totalPrice = 0;
     }
 
     public function getTotalPrice()
@@ -18,62 +21,77 @@ class Order
         return $this->totalPrice;
     }
 
-    public function getProducts()
-    {
-        return $this->products;
-    }
-
-    public function addProduct(Product $p, $quantity = 1)
+    public function addProduct(Product $p, int $quantity = 1)
     {
         if ($p->reduceAmount($quantity)) {
             $i = 0;
             while ($i < $quantity) {
                 $this->products[] = $p;
-                $this->totalPrice += $p->getPrice();
+                // $this->totalPrice += $p->getPrice();
                 $i++;
             }
-            //$this->totalPrice += $p->getPrice() * $quantity;
+            $this->totalPrice += $p->getPrice() * $quantity;
         } else
             echo "There are no more {$p->getProductName()}s";
-
-        // $this->products[] = $p; // za jedan proizvod
-        // $p->reduceAmount();
-        // $this->totalPrice += $p->getPrice();
     }
+
+    public function removeProduct(Product $p)
+    {
+        //homework
+        //remove from products and increase amount
+        //unset()
+    }
+
+    // 2x smoki
+    // 3x wine
+    // 1x chocolate
+
+    //products
+    //$p1, $p1, $p1, $p3, $p2, $p3
+    //counted
+    // 1, 3, 2
+
+    //automobili
+    //yugo, yugo, yugo, mercedes, mercedes, golf, golf, golf
+
+    //3x yugo
+    //2x mercedes
+    //3x golf
+
     public function __toString()
     {
-
         $str = "";
-        $added = array(); //array of ids
+        $counted = array(); //array of ids
 
         for ($i = 0; $i < count($this->products); $i++) {
             if ($this->products[$i] != NULL) {
-                if (!$this->checkIfIsAdded($added, $this->products[$i])) {
-                    $added[] = $this->products[$i]->getId();
+                if (!$this->checkIfIsInCounted($counted, $this->products[$i])) {
+                    $counted[] = $this->products[$i]->getId();
                     $j = 0;
                     foreach ($this->products as $p) {
                         if ($p->getId() == $this->products[$i]->getId())
                             $j++;
                     }
-                    $str .= "{$j}x{$this->products[$i]->getProductName()}<br>";
+                    $str .= "{$j}x {$this->products[$i]->getProductName()}<br>";
                 }
             }
         }
-
         return $str;
     }
-    public function removeProduct(Product $p, $quantity = 1)
-    {
-    }
-    private function checkIfIsAdded($added, Product $p)
-    {
-        if (count($added) == 0)
-            return false;
 
-        foreach ($added as $id) {
+    private function checkIfIsInCounted($counted, Product $p)
+    {
+        if (count($counted) == 0)
+            return FALSE;
+        foreach ($counted as $id) {
             if ($id == $p->getId())
-                return true;
+                return TRUE;
         }
-        return false;
+        return FALSE;
+    }
+
+    public function getProducts()
+    {
+        return $this->products;
     }
 }

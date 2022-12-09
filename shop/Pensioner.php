@@ -1,7 +1,14 @@
 <?php
 
+namespace Customer;
+
+use ACustomer\Customer;
+
+require_once('AbstructCustomer.php');
+require_once('traitCard.php');
 class Pensioner extends Customer
 {
+    use CreditCard;
     public static float $discount = 0.2;
 
     //T-property: static -> method: static
@@ -20,7 +27,7 @@ class Pensioner extends Customer
             echo "You don't have enough money!";
         else {
             $this->money -= $o->getTotalPrice() * (1 - self::$discount);
-            echo "$this->firstName has bought:<br>$o";
+            echo "$this->firstname has bought:<br>$o";
         }
     }
 }

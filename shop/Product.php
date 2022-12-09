@@ -1,12 +1,14 @@
 <?php
 
+namespace Customer;
+
 class Product
 {
-    protected int $id;
-    protected string $productName;
-    protected string $productType;
-    protected float $price;
-    protected int $amount;
+    private int $id;
+    private string $productName;
+    private string $productType;
+    private float $price;
+    private int $amount;
 
     public function __construct($id, $productName, $productType, $price, $amount)
     {
@@ -16,6 +18,12 @@ class Product
         $this->price = $price;
         $this->amount = $amount;
     }
+
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
     public function getId()
     {
         return $this->id;
@@ -31,30 +39,32 @@ class Product
         return $this->productType;
     }
 
-    public function getPrice()
-    {
-        return $this->price;
-    }
-
     public function getAmount()
     {
         return $this->amount;
     }
-    public function __toString()
-    {
-        return "Product: $this->productName with id: $this->id is type of $this->productType. Price of this product is {$this->price}din and its amount is $this->amount <br>";
-    }
 
-    public function reduceAmount($quantity)
+    public function reduceAmount($quantity = 1)
     {
         if ($this->amount >= $quantity) {
             $this->amount -= $quantity;
-            return true;
+            return TRUE;
         } else {
-            return false;
+            return FALSE;
         }
+        // if ($this->amount == 0)
+        //     return FALSE;
+        // $this->amount--;
+        // return TRUE;
     }
+
     public function addAmount($quantity)
     {
+        //homework
+    }
+
+    public function __toString()
+    {
+        return "Product: $this->productName with id: $this->id is type of $this->productType. Price of this product is {$this->price}din and its amount is $this->amount <br>";
     }
 }
